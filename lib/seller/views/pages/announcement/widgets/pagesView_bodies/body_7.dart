@@ -13,7 +13,7 @@ class SeventhBody extends StatelessWidget {
     'assets/icons/announcement_page_icons/wifi.png': 'Internet',
     'assets/icons/announcement_page_icons/airconditioning.png': 'Кондитционер',
     'assets/icons/announcement_page_icons/dishwasher.png': 'Посудамойка',
-    'assets/icons/announcement_page_icons/bedroom.png': 'Душевая кабина',
+    'assets/icons/announcement_page_icons/bathroom.png': 'Душевая кабина',
     'assets/icons/announcement_page_icons/baby.png': 'Можно с детми',
     'assets/icons/announcement_page_icons/animals.png': 'Можно с животными',
   };
@@ -43,7 +43,7 @@ class SeventhBody extends StatelessWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
           ),
-          itemCount: 8,
+          itemCount: media.length,
           itemBuilder: (BuildContext context, index) {
             return Container(
               margin: const EdgeInsets.all(8.0),
