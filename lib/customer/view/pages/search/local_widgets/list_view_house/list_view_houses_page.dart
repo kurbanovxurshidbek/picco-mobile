@@ -46,12 +46,6 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
       controller: snappingSheetController,
       lockOverflowDrag: true,
       snappingPositions: const [
-        // SnappingPosition.factor(
-        //   positionFactor: 0.3,
-        //   snappingCurve: Curves.easeOutExpo,
-        //   snappingDuration: Duration(milliseconds: 300),
-        //   grabbingContentOffset: GrabbingContentOffset.top,
-        // ),
         SnappingPosition.factor(
           positionFactor: 0.0,
           snappingCurve: Curves.easeOutExpo,
@@ -61,7 +55,7 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
         SnappingPosition.factor(
           snappingCurve: Curves.easeOutExpo,
           snappingDuration: Duration(milliseconds: 300),
-          positionFactor: 0.55,
+          positionFactor: 0.5,
         ),
         SnappingPosition.factor(
           grabbingContentOffset: GrabbingContentOffset.bottom,

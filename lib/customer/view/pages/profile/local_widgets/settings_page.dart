@@ -60,7 +60,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     onChanged: (value) {
                       setState(
                         () {
-                          //do something
                           switched = value;
                         },
                       );

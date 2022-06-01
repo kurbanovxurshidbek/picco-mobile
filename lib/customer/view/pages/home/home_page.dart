@@ -20,6 +20,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
 
+  final keyOne = GlobalKey();
+  final keyTwo = GlobalKey();
+  final keyThree = GlobalKey();
+
   int houseTypeIndex = -1;
   int cityTypeIndex = -1;
 
@@ -51,6 +55,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    // WidgetsBinding.instance!.addPostFrameCallback(
+    //   (timeStamp) => ShowCaseWidget.of(context)!.startShowCase([
+    //     // keyOne,
+    //     // keyTwo,
+    //     // keyThree,
+    //   ]),
+    // );
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }

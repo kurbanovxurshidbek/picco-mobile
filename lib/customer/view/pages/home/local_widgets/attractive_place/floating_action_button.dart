@@ -14,7 +14,7 @@ class FloatingActionButtonHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
       alignment: Alignment.center,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 500),
       sizeCurve: Curves.easeOutCirc,
       firstCurve: Curves.easeOutExpo,
       secondCurve: Curves.easeOutExpo,

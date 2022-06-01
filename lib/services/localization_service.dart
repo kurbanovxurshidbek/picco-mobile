@@ -20,51 +20,39 @@ enum LocalizationKey {
   str_tashkent,
   str_samarkand,
   str_khiva,
-
   str_user_management,
   str_billing_details,
   str_settings,
   str_notifications,
   str_information,
   str_log_out,
-
   str_full_name,
   str_phone_number,
   str_password,
   str_confirm_password,
-
   str_your_phone_number,
   str_enter_phone_number,
-
   str_your_code,
   str_sent_sms,
-
   str_favorite_page_header,
   str_empty_favorite_page,
-
   str_location_text_button,
   str_read_more,
-
   str_messages_page_header,
   str_empty_messages_page,
-
   str_dark_mode,
   str_language,
-
   str_clear,
   str_clear_all,
   str_done,
-
   str_wifi,
   str_kitchen,
   str_air_conditioning,
   str_washing_machine,
   str_iron,
-
   str_price_range,
   str_average_price,
   str_facilities,
-
   str_sign_up,
   str_sign_in,
   str_already_have_an_account,
@@ -171,8 +159,14 @@ class _LocalizationServiceDelegate
 class LocalizationViewModel extends ChangeNotifier {
   String? currentLanguage;
   Locale? _locale;
+  bool isUser = true;
 
   Locale? get getlocale => _locale;
+
+  changeUser() {
+    isUser = !isUser;
+    notifyListeners();
+  }
 
   void changeLocale(String newLocale) {
     Locale convertedLocale;
@@ -236,7 +230,6 @@ class LocalizationViewModel extends ChangeNotifier {
   }
 }
 
-
 class LanguageLabels {
   final String flag;
   final String language;
@@ -253,33 +246,35 @@ class LanguageLabelsList {
     HiveService.storeString(HiveService.key(StorageKeys.LANGUAGE), language);
   }
 
-  update(BuildContext context){
-    if(LocalizationViewModel().defineCurrentLanguage(context) != HiveService.loadString(HiveService.key(StorageKeys.LANGUAGE))){
+  update(BuildContext context) {
+    if (LocalizationViewModel().defineCurrentLanguage(context) !=
+        HiveService.loadString(HiveService.key(StorageKeys.LANGUAGE))) {
       storeNewLocale(LocalizationViewModel().defineCurrentLanguage(context));
     }
   }
 
   List<LanguageLabels> locales(BuildContext context) {
     if (HiveService.box.containsKey(HiveService.key(StorageKeys.LANGUAGE))) {
-      chosenLanguage = HiveService.loadString(HiveService.key(StorageKeys.LANGUAGE));
+      chosenLanguage =
+          HiveService.loadString(HiveService.key(StorageKeys.LANGUAGE));
     } else {
       chosenLanguage = 'Русский';
     }
     return [
       LanguageLabels(
-          flag: '🇺🇸',
-          language: 'English',
-          isChecked: chosenLanguage == 'English',
+        flag: '🇺🇸',
+        language: 'English',
+        isChecked: chosenLanguage == 'English',
       ),
       LanguageLabels(
-          flag: '🇷🇺',
-          language: 'Русский',
-          isChecked: chosenLanguage == 'Русский',
+        flag: '🇷🇺',
+        language: 'Русский',
+        isChecked: chosenLanguage == 'Русский',
       ),
       LanguageLabels(
-          flag: '🇺🇿',
-          language: 'O\'zbek',
-          isChecked: chosenLanguage == 'O\'zbek',
+        flag: '🇺🇿',
+        language: 'O\'zbek',
+        isChecked: chosenLanguage == 'O\'zbek',
       ),
     ];
   }

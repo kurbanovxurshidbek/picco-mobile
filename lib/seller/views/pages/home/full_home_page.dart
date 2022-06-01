@@ -1,5 +1,6 @@
 import 'package:picco/customer/models/favorite_model.dart';
-import 'package:picco/seller/views/pages/intro/intro_page.dart';
+import 'package:picco/seller/views/pages/announcement/view.dart';
+import 'package:picco/seller/views/pages/detail/seller_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +15,7 @@ class FullHomePage extends StatefulWidget {
 
 class _FullHomePageState extends State<FullHomePage> {
   int sellectedIndex = 0;
+
   List<String> name = [
     "All",
     "House / Flat",
@@ -42,7 +44,7 @@ class _FullHomePageState extends State<FullHomePage> {
             children: [
               ///header
               Container(
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: 0.3.sh,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
@@ -98,7 +100,7 @@ class _FullHomePageState extends State<FullHomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => IntroPage()));
+                                      builder: (context) => AnnouncementPage()));
                             });
                           },
                           child: const Text("Создать обявления"),
@@ -133,31 +135,22 @@ class _FullHomePageState extends State<FullHomePage> {
                                     : houseNameContainer(index),
                           ),
                         ),
-                        SizedBox(
-                          height: 0.5.sh,
-                          child: ListView(children: [
-                            Column(
-                              children: favourites.map((FavouriteModel e) => card(e, context)).toList(),
-                            ),
-                          ]),
-                        ),
+                        const SizedBox(height: 10),
+                        ...favourites
+                            .map((FavouriteModel e) => card(e, context))
+                            .toList(),
                       ],
                     )
                   : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(width: double.infinity, height: 0.05.sh),
                         SizedBox(
-                            width: 600.w,
-                            height: 320,
-                            child: Lottie.asset("assets/lottie/home.json")),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "oбявлений пока нет",
-                            style: TextStyle(fontSize: 18.sp),
+                          child: Lottie.asset(
+                            "assets/lottie/home.json",
+                            height: 250,
                           ),
                         ),
-                        SizedBox(height: 20.h),
+                        const Text("Oбъявления пока нет"),
                       ],
                     ),
             ],
@@ -197,107 +190,123 @@ class _FullHomePageState extends State<FullHomePage> {
       );
 
   Widget card(FavouriteModel element, BuildContext context,) {
-    return Container(
-      height: 80.h,
-      width: double.infinity,
-      clipBehavior: Clip.antiAlias,
-      margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 10.h,top: 10.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.r),
-        color: Colors.white,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            height: 86.h,
-            width: 109.w,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(element.homes.last.mainImage),
-                  fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(10),
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> SellerDetailPage(element: element)));
+      },
+      child: Container(
+        height: 80.h,
+        width: double.infinity,
+        clipBehavior: Clip.antiAlias,
+        margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 10.h,top: 10.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.r),
+          color: Colors.white,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //leading
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 80.h,
+                width: 100.w,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(element.homes.last.mainImage),
+                      fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Tashkent c",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 17.sp,
-                  ),
-                ),
-                Spacer(),
-                Text(
-                  "Yakkasaroy region",
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                  ),
-                ),
-                Spacer(),
-                Row(
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Tashkent c",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 17.sp,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 40.w,
+                        ),
+                        Text(
+                          "200\$",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.sp,
+                          ),
+                        )
+                      ],
+                    ),
+                    Spacer(),
                     Text(
-                      "${int.tryParse('3')} ${int.tryParse('3')! > 1 ? 'beds' : 'bed'}",
+                      "Yakkasaroy region",
                       style: TextStyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
                       ),
                     ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      "${int.tryParse('2')} ${int.tryParse('2')! > 1 ? 'baths' : 'bath'}",
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      "${int.tryParse('3')} ${int.tryParse('3')! > 1 ? 'rooms' : 'room'}",
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      '${int.tryParse('200')}m',
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      '2',
-                      style: TextStyle(
-                        fontSize: 6.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    Spacer(),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${int.tryParse('3')} ${int.tryParse('3')! > 1 ? 'beds' : 'bed'}",
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(width: 8.w),
+                        Text(
+                          "${int.tryParse('2')} ${int.tryParse('2')! > 1 ? 'baths' : 'bath'}",
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(width: 8.w),
+                        Text(
+                          "${int.tryParse('3')} ${int.tryParse('3')! > 1 ? 'rooms' : 'room'}",
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(width: 8.w),
+                        Text(
+                          '${int.tryParse('200')}m',
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          '2',
+                          style: TextStyle(
+                            fontSize: 6.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Text(
-            "200\$",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 12.sp,
-            ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

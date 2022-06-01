@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
+enum ErrorTextField { confirmError, emptyError }
+
 class SignUpFullNamePage extends StatefulWidget {
   const SignUpFullNamePage({Key? key}) : super(key: key);
 
@@ -20,6 +22,10 @@ class SignUpFullNamePage extends StatefulWidget {
 class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
   bool scroll = false;
   bool errorConfirmPassword = false;
+  bool errorEmptyFullName = false;
+  bool errorEmptyPassword = false;
+  bool errorEmptyConfirmPassword = false;
+  bool realTimeError = false;
   File? image;
   final picker = ImagePicker();
 
@@ -41,15 +47,37 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
   }
 
   textFieldCheck(phoneNumber) {
-    if (confirmPasswordController.text.trim() !=
+    if (fullNameController.text.trim().isEmpty) {
+      setState(() {
+        errorEmptyFullName = true;
+      });
+    }
+    if (passwordController.text.trim().isEmpty) {
+      setState(() {
+        errorEmptyPassword = true;
+      });
+    }
+    if (confirmPasswordController.text.trim().isEmpty) {
+      setState(() {
+        errorEmptyConfirmPassword = true;
+      });
+    } else if (confirmPasswordController.text.trim() !=
         passwordController.text.trim()) {
       setState(() {
         errorConfirmPassword = true;
       });
+    }
+    if (errorEmptyPassword ||
+        errorEmptyFullName ||
+        errorConfirmPassword ||
+        errorEmptyConfirmPassword) {
       return;
     }
     setState(() {
       errorConfirmPassword = false;
+      errorEmptyPassword = false;
+      errorEmptyFullName = false;
+      errorEmptyConfirmPassword = false;
     });
     UserModel user = UserModel(
       fullName: fullNameController.text,
@@ -58,7 +86,24 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
       role: "user",
     );
     HiveService.box.put("user", user.toJson());
-    Navigator.popUntil(context, (route) => route.isFirst);
+    // Navigator.popUntil(context, (route) => route.isFirst);
+  }
+
+  _errorText(TextEditingController controller) {
+    if (controller.text.trim().toString().isEmpty) {
+      return "Can't be empty";
+    } else if (controller == confirmPasswordController &&
+        errorConfirmPassword) {
+      return "Error confirm password";
+    }
+    return null;
+  }
+
+  _errorBorder(TextEditingController controller){
+    if(controller.text.trim().isNotEmpty){
+      return Colors.grey;
+    }
+    return Colors.red;
   }
 
   @override
@@ -121,7 +166,7 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
     );
   }
 
-  textFieldBox(index, controller) {
+  textFieldBox(index, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(
@@ -141,23 +186,18 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
             );
           });
         },
+        onChanged: (_) => setState(() {}),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: controller == confirmPasswordController &&
-                      errorConfirmPassword
-                  ? Colors.red
-                  : Colors.grey,
+              color: _errorBorder(controller),
             ),
           ),
           focusedErrorBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.blue)),
           errorBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.red)),
-          errorText:
-              controller == confirmPasswordController && errorConfirmPassword
-                  ? "Error confirm password"
-                  : null,
+          errorText: _errorText(controller),
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.blue)),
           hintText: textFieldHintText(index),

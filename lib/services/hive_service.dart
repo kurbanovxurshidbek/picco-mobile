@@ -20,11 +20,8 @@ class HiveService {
   }
 
   static String loadString(String key){
-    if(box.containsKey(key)){
-      String data = box.get(key);
-      return data;
-    }
-    return 'No data';
+    String data = box.get(key, defaultValue: '');
+    return data;
   }
 
   static Future<void> removeString(String key) async {
@@ -37,11 +34,8 @@ class HiveService {
   }
 
   static List loadData(String key){
-    if(box.containsKey(key)){
-      List data = box.get(key);
-      return data;
-    }
-    return [];
+    List data = box.get(key, defaultValue: []);
+    return data;
   }
 
   static Future<void> removeData(String key) async {

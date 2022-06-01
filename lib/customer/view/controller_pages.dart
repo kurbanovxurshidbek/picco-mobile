@@ -1,11 +1,13 @@
+import 'package:picco/customer/viewmodel/utils.dart';
+import 'package:picco/services/localization_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:picco/customer/viewmodel/utils.dart';
+import 'package:provider/provider.dart';
+
 import 'pages/favorite/favorite_page.dart';
 import 'pages/message/message_page.dart';
 import 'pages/profile/profile_page.dart';
 import 'pages/search/search_page.dart';
-import 'pages/switch/switch_page.dart';
 
 class PagesController extends StatefulWidget {
   const PagesController({Key? key}) : super(key: key);
@@ -22,12 +24,11 @@ class _PagesControllerState extends State<PagesController> {
   List<Widget> pages = [
     const SearchPage(),
     const FavoritePage(),
-    const SwitchPage(),
     const MessagePage(),
     const ProfilePage(),
   ];
 
-  callToIndex(index){
+  callToIndex(index) {
     setState(() {
       pageIndex = index;
     });
@@ -68,12 +69,12 @@ class _PagesControllerState extends State<PagesController> {
             ),
             child: const Icon(CupertinoIcons.repeat),
           ).onTap(function: () {
-            setState(() {
-              pageIndex = 2;
-            });
+            final provider = context.read<LocalizationViewModel>();
+            provider.changeUser();
+            Navigator.pop(context);
           }),
-          icons(icon: CupertinoIcons.chat_bubble, index: 3),
-          icons(icon: CupertinoIcons.person, index: 4),
+          icons(icon: CupertinoIcons.chat_bubble, index: 2),
+          icons(icon: CupertinoIcons.person, index: 3),
         ],
       ),
     );

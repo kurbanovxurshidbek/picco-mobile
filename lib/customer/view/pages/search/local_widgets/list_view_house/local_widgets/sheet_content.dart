@@ -38,8 +38,8 @@ class SheetContent extends StatelessWidget {
                     children: [
                       Container(
                         alignment: Alignment.topRight,
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        width: MediaQuery.of(context).size.width,
+                        height: 0.3.sh,
+                        width: 1.sw,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(

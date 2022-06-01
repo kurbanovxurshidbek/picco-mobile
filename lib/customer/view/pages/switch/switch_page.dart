@@ -1,12 +1,11 @@
 import 'package:picco/customer/models/favorite_model.dart';
 import 'package:picco/customer/view/pages/favorite/local_widgets/favorite_houses_page.dart';
 import 'package:picco/customer/viewmodel/utils.dart';
-import 'package:picco/seller/announcement/view.dart';
+import 'package:picco/seller/views/pages/announcement/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-
 
 class SwitchPage extends StatefulWidget {
   const SwitchPage({Key? key}) : super(key: key);
@@ -88,7 +87,8 @@ class _SwitchPageState extends State<SwitchPage> {
                       child: MaterialButton(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.r)),
+                            borderRadius: BorderRadius.circular(5.r),
+                        ),
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const AnnouncementPage()));
                         },
