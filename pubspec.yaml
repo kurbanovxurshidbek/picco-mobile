@@ -41,7 +41,7 @@ dependencies:
   # For getting current location
   geolocator: ^8.2.1
 
-  # for getting searched location long-lang
+  # For getting searched location long-lang
   geocoding: ^2.0.4
 
   # For bottom_sheet
@@ -57,12 +57,12 @@ dependencies:
   # For network requests
   http: ^0.13.4
 
-  #image load
+  # image load
   image_picker: any
-  #read more info
+  # read more info
   readmore: ^2.1.0
 
-  #linggraph appearance
+  # linggraph appearance
   fl_chart: ^0.50.6
 
 dev_dependencies:
