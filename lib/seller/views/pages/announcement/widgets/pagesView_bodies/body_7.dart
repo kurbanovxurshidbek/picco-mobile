@@ -48,6 +48,7 @@ class SeventhBody extends StatelessWidget {
             return GestureDetector(
               onTap: (){
                 // TODO: FIll the object's fields based on the index...
+                print('Pressed $index => ${media.values.toList()[index]}');
               },
               child: Container(
                 margin: const EdgeInsets.all(8.0),
