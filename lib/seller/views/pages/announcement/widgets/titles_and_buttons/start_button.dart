@@ -4,26 +4,26 @@ import 'package:provider/provider.dart';
 
 class StartButton extends StatelessWidget {
   AnimationController controller;
+
   StartButton({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider =
-    context.select((AnnouncementProvider provider) => provider);
+        context.select((AnnouncementProvider provider) => provider);
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
       child: MaterialButton(
         height: 50,
         minWidth: double.infinity,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: const Text(
           'Старт',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 18,
+            fontSize: 15,
             fontWeight: FontWeight.bold,
           ),
         ),

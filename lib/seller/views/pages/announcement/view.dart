@@ -80,9 +80,10 @@ class _AnnouncementPageState extends State<AnnouncementPage>
                     Icons.close,
                     color: Colors.white,
                   ),
-                ).onTap(function: () {
-                  Navigator.pop(context);
-                },
+                ).onTap(
+                  function: () {
+                    Navigator.pop(context);
+                  },
                 ),
               ),
               actions: [
@@ -147,13 +148,11 @@ class _AnnouncementPageState extends State<AnnouncementPage>
               child: PageView(
                 controller: provider.pageController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: const [
+                children: [
                   FirstBody(), //0
                   SecondBody(), //1
                   ThirdBody(), //2
                   FourthBody(), //3
-                  // FifthBody(),
-                  // SixthBody(),
                   SeventhBody(), //4
                   EighthBody(), //5
                   NinthBody(), //6

@@ -16,7 +16,7 @@ class Titles extends StatelessWidget {
       headers[currentPageIndex],
       style: TextStyle(
         color: Colors.white,
-        fontSize: 26.sp,
+        fontSize: 23.sp,
         fontWeight: FontWeight.bold,
       ),
     );

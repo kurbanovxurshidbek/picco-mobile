@@ -1,17 +1,17 @@
-import 'package:picco/seller/views/pages/announcement/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:picco/seller/views/pages/announcement/provider.dart';
 import 'package:provider/provider.dart';
 
 class NextBackButtons extends StatelessWidget {
   AnimationController controller;
+
   NextBackButtons({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final provider =
-        context.select((AnnouncementProvider provider) => provider);
+    final watchProvider = context.watch<AnnouncementProvider>();
     return Container(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       decoration: const BoxDecoration(
         color: Colors.white,
         border: Border(
@@ -24,50 +24,62 @@ class NextBackButtons extends StatelessWidget {
           MaterialButton(
             child: const Text(
               'Назад',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 15),
             ),
             color: Colors.transparent,
             elevation: 0.0,
             onPressed: () {
-              if (provider.headers[provider.currentPageIndex].isNotEmpty) {
+              if (watchProvider
+                  .headers[watchProvider.currentPageIndex].isNotEmpty) {
                 controller
                   ..repeat(reverse: false)
                   ..forward();
               }
-              provider.pageController.previousPage(
+              watchProvider.pageController.previousPage(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
             },
           ),
           MaterialButton(
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             child: Text(
-              provider.currentPageIndex == 9 ? 'Сохранить обявление' : 'Далее',
+              watchProvider.currentPageIndex == 9
+                  ? 'Сохранить обявление'
+                  : 'Далее',
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 color: Colors.white,
               ),
             ),
-            color: provider.currentPageIndex == 3 && provider.isDisabled ? Colors.grey.shade300 : const Color(0xff7842D0),
-            textColor: provider.currentPageIndex == 3 && provider.isDisabled ? Colors.black45 : Colors.white,
+            color:
+                watchProvider.currentPageIndex == 3 && watchProvider.isDisabled
+                    ? Colors.grey.shade300
+                    : const Color(0xff7842D0),
+            textColor:
+                watchProvider.currentPageIndex == 3 && watchProvider.isDisabled
+                    ? Colors.black45
+                    : Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
             onPressed: () {
-              if(provider.currentPageIndex == 3 && provider.isDisabled){
+              if (watchProvider.currentPageIndex == 3 &&
+                  watchProvider.isDisabled) {
                 null;
-              } else{
-                if (provider.headers[provider.currentPageIndex].isNotEmpty) {
+              } else {
+                if (watchProvider
+                    .headers[watchProvider.currentPageIndex].isNotEmpty) {
                   controller
                     ..repeat(reverse: false)
                     ..forward();
                 }
-                provider.currentPageIndex == 9
+                watchProvider.currentPageIndex == 9
                     ? Navigator.pop(context)
-                    : provider.pageController.nextPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.ease,
-                );
+                    : watchProvider.pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.ease,
+                      );
               }
             },
           ),

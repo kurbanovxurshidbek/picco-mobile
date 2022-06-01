@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:picco/customer/viewmodel/utils.dart';
+import 'package:picco/seller/views/pages/announcement/provider.dart';
+import 'package:picco/services/log_service.dart';
+import 'package:provider/provider.dart';
 
 class SeventhBody extends StatelessWidget {
   const SeventhBody({Key? key}) : super(key: key);
@@ -20,54 +25,73 @@ class SeventhBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final provider = context.select((AnnouncementProvider provider) => provider);
-
+    final watchProvider = context.watch<AnnouncementProvider>();
+    Log.d(watchProvider.listFacilities.toString());
     return ListView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.symmetric(
         vertical: 20.0,
-        horizontal: 10.0,
+        horizontal: 15.0,
       ),
       children: [
         const Text(
           'Есть ли у вас особые удобства ?',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20),
         GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           padding: EdgeInsets.zero,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
+              crossAxisCount: 2),
           itemCount: media.length,
           itemBuilder: (BuildContext context, index) {
             return Container(
-              margin: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.grey),
+                border: Border.all(
+                  color: watchProvider.listFacilities
+                          .contains(media.values.toList()[index])
+                      ? Colors.black
+                      : Colors.grey.shade300,
+                  width: watchProvider.listFacilities
+                          .contains(media.values.toList()[index])
+                      ? 1.5
+                      : 1.3,
+                ),
                 borderRadius: BorderRadius.circular(5.0),
               ),
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    media.values.toList()[index],
-                    style: const TextStyle(fontSize: 15),
+              // height: 0.2.sh,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: SizedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        media.values.toList()[index],
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 15.h),
+                      Image.asset(
+                        media.keys.toList()[index],
+                        width: 0.06.sw,
+                        fit: BoxFit.cover,
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 20.0),
-                  Image.asset(
-                    media.keys.toList()[index],
-                    height: 35,
-                    width: 35,
-                    fit: BoxFit.cover,
-                  ),
-                ],
+                ),
               ),
+            ).onTap(
+              function: () {
+                watchProvider.listFacilities
+                        .contains(media.values.toList()[index])
+                    ? watchProvider
+                        .removeFacilities(media.values.toList()[index])
+                    : watchProvider
+                        .chooseFacilities(media.values.toList()[index]);
+              },
             );
           },
         ),

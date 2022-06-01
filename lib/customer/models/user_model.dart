@@ -1,21 +1,21 @@
 class UserModel {
-  dynamic id;
-  dynamic fullName;
-  dynamic password;
-  dynamic phoneNumber;
-  dynamic role;
-  dynamic email;
+  late String id;
+  String? fullName;
+  String? password;
+  String? phoneNumber;
+  late String role;
+  String? email;
 
   UserModel({
-    this.id,
+    required this.id,
     this.fullName,
     this.password,
     this.phoneNumber,
-    this.role,
+    required this.role,
     this.email,
   });
 
-  factory UserModel.fromJson(Map<dynamic, dynamic> json) => UserModel(
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["id"],
         fullName: json["fullName"],
         password: json["password"],
@@ -24,7 +24,7 @@ class UserModel {
         email: json["email"],
       );
 
-  Map<dynamic, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "fullName": fullName,
         "password": password,
@@ -32,4 +32,9 @@ class UserModel {
         "role": role,
         "email": email,
       };
+
+  @override
+  String toString() {
+    return "id: $id, role: $role, fullName $fullName, password: $password, phoneNumber: $phoneNumber, email: $email";
+  }
 }

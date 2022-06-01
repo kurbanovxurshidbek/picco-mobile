@@ -65,6 +65,8 @@ dependencies:
   # linggraph appearance
   fl_chart: ^0.50.6
 
+  auto_size_text: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -78,6 +80,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
     - assets/icons/home_page_icons/
     - assets/icons/announcement_page_icons/
     - assets/logo/
