@@ -45,28 +45,33 @@ class SeventhBody extends StatelessWidget {
           ),
           itemCount: media.length,
           itemBuilder: (BuildContext context, index) {
-            return Container(
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.grey),
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    media.values.toList()[index],
-                    style: const TextStyle(fontSize: 15),
-                  ),
-                  const SizedBox(height: 20.0),
-                  Image.asset(
-                    media.keys.toList()[index],
-                    height: 35,
-                    width: 35,
-                    fit: BoxFit.cover,
-                  ),
-                ],
+            return GestureDetector(
+              onTap: (){
+                // TODO: FIll the object's fields based on the index...
+              },
+              child: Container(
+                margin: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      media.values.toList()[index],
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const SizedBox(height: 20.0),
+                    Image.asset(
+                      media.keys.toList()[index],
+                      height: 35,
+                      width: 35,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
               ),
             );
           },
