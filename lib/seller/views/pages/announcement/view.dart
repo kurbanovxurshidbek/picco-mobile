@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:picco/customer/viewmodel/utils.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:picco/seller/views/pages/announcement/provider.dart';
-import 'widgets/pagesView_bodies/body_1.dart';
-import 'widgets/pagesView_bodies/body_2.dart';
-import 'widgets/pagesView_bodies/body_3.dart';
-import 'widgets/pagesView_bodies/body_4.dart';
-import 'widgets/pagesView_bodies/body_5.dart';
-import 'widgets/pagesView_bodies/body_6.dart';
-import 'widgets/pagesView_bodies/body_7.dart';
-import 'widgets/pagesView_bodies/body_8.dart';
-import 'widgets/pagesView_bodies/body_9.dart';
-import 'widgets/pagesView_bodies/body_10.dart';
-import 'widgets/pagesView_bodies/body_11.dart';
-import 'widgets/pagesView_bodies/body_12.dart';
-import 'widgets/titles_and_buttons/titles.dart';
-import 'widgets/titles_and_buttons/save_button.dart';
-import 'widgets/titles_and_buttons/start_button.dart';
-import 'widgets/titles_and_buttons/back_next_button.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_1.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_2.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_3.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_4.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_7.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_8.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_9.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_10.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_11.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/pagesView_bodies/body_12.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/titles_and_buttons/titles.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/titles_and_buttons/start_button.dart';
+import 'package:picco/seller/views/pages/announcement/widgets/titles_and_buttons/back_next_button.dart';
 
 class AnnouncementPage extends StatefulWidget {
   const AnnouncementPage({Key? key}) : super(key: key);
@@ -70,7 +67,7 @@ class _AnnouncementPageState extends State<AnnouncementPage>
     return Scaffold(
       resizeToAvoidBottomInset: provider.currentPageIndex == 9,
       extendBodyBehindAppBar: true,
-      appBar: provider.currentPageIndex == 11
+      appBar: provider.currentPageIndex == 10
           ? null
           : AppBar(
               elevation: 0.0,
@@ -85,7 +82,8 @@ class _AnnouncementPageState extends State<AnnouncementPage>
                   ),
                 ).onTap(function: () {
                   Navigator.pop(context);
-                }),
+                },
+                ),
               ),
               actions: [
                 Padding(
@@ -122,7 +120,7 @@ class _AnnouncementPageState extends State<AnnouncementPage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            if (!provider.isExpanded && provider.currentPageIndex != 11)
+            if (provider.headers[provider.currentPageIndex].isNotEmpty)
               Expanded(
                 child: Container(
                   // height: 250.h,
@@ -150,18 +148,18 @@ class _AnnouncementPageState extends State<AnnouncementPage>
                 controller: provider.pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: const [
-                  FirstBody(),
-                  SecondBody(),
-                  ThirdBody(),
-                  FourthBody(),
-                  FifthBody(),
-                  SixthBody(),
-                  SeventhBody(),
-                  EighthBody(),
-                  NinthBody(),
-                  TenthBody(),
-                  EleventhBody(),
-                  TwelfthBody(),
+                  FirstBody(), //0
+                  SecondBody(), //1
+                  ThirdBody(), //2
+                  FourthBody(), //3
+                  // FifthBody(),
+                  // SixthBody(),
+                  SeventhBody(), //4
+                  EighthBody(), //5
+                  NinthBody(), //6
+                  TenthBody(), //7
+                  EleventhBody(), //8
+                  TwelfthBody(), //9
                 ],
                 onPageChanged: (int index) {
                   provider.updatePageIndex(index);
@@ -169,10 +167,9 @@ class _AnnouncementPageState extends State<AnnouncementPage>
               ),
             ),
             if (currentPageIndex == 0) StartButton(controller: controller),
-            if (currentPageIndex == 4 || currentPageIndex == 5)
-              SaveButton(controller: controller),
-            if (currentPageIndex > 0 && currentPageIndex < 4 ||
-                currentPageIndex > 5 && currentPageIndex < 12)
+            // if (currentPageIndex == 4)
+            //   SaveButton(controller: controller),
+            if (currentPageIndex > 0 && currentPageIndex < 10)
               NextBackButtons(controller: controller),
           ],
         ),

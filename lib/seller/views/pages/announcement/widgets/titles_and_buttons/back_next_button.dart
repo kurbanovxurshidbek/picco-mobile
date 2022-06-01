@@ -42,28 +42,33 @@ class NextBackButtons extends StatelessWidget {
           ),
           MaterialButton(
             child: Text(
-              provider.currentPageIndex == 11 ? 'Сохранить обявление' : 'Далее',
+              provider.currentPageIndex == 9 ? 'Сохранить обявление' : 'Далее',
               style: const TextStyle(
                 fontSize: 18,
                 color: Colors.white,
               ),
             ),
-            color: const Color(0xff7842D0),
+            color: provider.currentPageIndex == 3 && provider.isDisabled ? Colors.grey.shade300 : const Color(0xff7842D0),
+            textColor: provider.currentPageIndex == 3 && provider.isDisabled ? Colors.black45 : Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
             onPressed: () {
-              if (provider.headers[provider.currentPageIndex].isNotEmpty) {
-                controller
-                  ..repeat(reverse: false)
-                  ..forward();
+              if(provider.currentPageIndex == 3 && provider.isDisabled){
+                null;
+              } else{
+                if (provider.headers[provider.currentPageIndex].isNotEmpty) {
+                  controller
+                    ..repeat(reverse: false)
+                    ..forward();
+                }
+                provider.currentPageIndex == 9
+                    ? Navigator.pop(context)
+                    : provider.pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                );
               }
-              provider.currentPageIndex == 11
-                  ? Navigator.pop(context)
-                  : provider.pageController.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease,
-                    );
             },
           ),
         ],
