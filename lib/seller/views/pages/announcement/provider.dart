@@ -9,7 +9,6 @@ class AnnouncementProvider extends ChangeNotifier {
   FocusNode addressFocus = FocusNode();
   FocusNode titleFocus = FocusNode();
 
-  bool isExpanded = false;
   bool isDisabled = true;
   int currentPageIndex = 0;
   int price = 0;
@@ -20,8 +19,8 @@ class AnnouncementProvider extends ChangeNotifier {
     0.47.sh,
     0.72.sh,
     0.55.sh,
-    0.78.sh,
-    0.78.sh,
+    // 0.78.sh,
+    // 0.78.sh,
     0.65.sh,
     0.5.sh,
     0.7.sh,
@@ -35,8 +34,8 @@ class AnnouncementProvider extends ChangeNotifier {
     'Чего вы предлогаете и каком типе хотите вести продажу?',
     'Какой у вас жильё?',
     'Чего вы предлогаете и каком типе хотите вести продажу?',
-    '',
-    '',
+    // '',
+    // '',
     'Раскажите гостям о примуществах ващего жиля',
     'Добавить фото жиля',
     'Добавить фото жиля',
@@ -75,6 +74,22 @@ class AnnouncementProvider extends ChangeNotifier {
 
   chooseOption(String option) {
     selectedOption = option;
+    notifyListeners();
+  }
+
+  // updateHeight(bool isExpanded){
+  //   if(isExpanded){
+  //     headers[3] = '';
+  //     heights[3] = 0.72.sh;
+  //   }else{
+  //     headers[3] = 'Чего вы предлогаете и каком типе хотите вести продажу?';
+  //     heights[3] = 0.55.sh;
+  //   }
+  //   notifyListeners();
+  // }
+
+  updateButtonDisability(bool _isDisabled){
+    isDisabled = _isDisabled;
     notifyListeners();
   }
 }
