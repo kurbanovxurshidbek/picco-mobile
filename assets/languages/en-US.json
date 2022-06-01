@@ -1,0 +1,66 @@
+{
+  "str_intro": "Find your best place to live and relax",
+  "str_buy_houses": "Buy houses",
+  "str_rent_houses": "Rent houses",
+  "str_houses": "Houses",
+  "str_for_business": "Buildings for business",
+  "str_new_buildings": "New buildings",
+  "str_country_houses": "Country houses",
+  "str_cottages": "Cottages",
+  "str_hotels": "Hotels",
+  "str_choose_city": "Choose a city",
+  "str_attractive_places": "Attractive places",
+  "str_tashkent": "Tashkent",
+  "str_samarkand": "Samarkand",
+  "str_khiva": "Khiva",
+
+  "str_user_management": "User Management",
+  "str_billing_details": "Billing details",
+  "str_settings": "Settings",
+  "str_notifications": "Notifications",
+  "str_information": "Information",
+  "str_log_out": "Log out",
+
+  "str_full_name": "Full name",
+  "str_phone_number": "Phone number",
+  "str_password": "Password",
+  "str_confirm_password": "Confirm password",
+
+  "str_your_phone_number": "Your phone number",
+  "str_enter_phone_number": "Enter your phone number with your\n country code",
+
+  "str_your_code": "Your code",
+  "str_sent_sms": "We have sent an SMS with an activation code\n to your phone",
+
+  "str_favorite_page_header": "Favorite houses",
+  "str_empty_favorite_page": "You can collect your favorite places here",
+
+  "str_location_text_button": " location...",
+  "str_read_more": " Read more...",
+
+  "str_messages_page_header": "Messages ",
+  "str_empty_messages_page": "You can chat with home sellers or home renters here",
+
+  "str_dark_mode": "Dark mode",
+  "str_language": "Language",
+
+  "str_clear": "Clear",
+  "str_clear_all": "Clear all",
+  "str_done": "Done",
+
+  "str_wifi": "Wi-Fi",
+  "str_kitchen": "Kitchen",
+  "str_air_conditioning": "Air Conditioning",
+  "str_washing_machine": "Washing Machine",
+  "str_iron": "Iron",
+
+  "str_price_range": "Price Range",
+  "str_average_price": "Average Price",
+  "str_facilities": "Facilities",
+
+  "str_sign_up": "Sign Up",
+  "str_sign_in": "Sign In",
+  "str_already_have_an_account": "Already have an account? ",
+  "str_dont_have_an_account": "Don't have an account? "
+
+}

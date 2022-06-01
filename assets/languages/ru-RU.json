@@ -1,0 +1,67 @@
+{
+  "str_intro": "Найдите свое лучшее место для жизни и отдыха",
+  "str_buy_houses": "Купить дома",
+  "str_rent_houses": "Аренда домов",
+  "str_houses": "Дома",
+  "str_for_business": "Здания для бизнеса",
+  "str_new_buildings": "Новостройки",
+  "str_country_houses": "Загородные дома",
+  "str_cottages": "Коттеджи",
+  "str_hotels": "Гостиницы",
+  "str_choose_city": "Выберите город",
+  "str_attractive_places": "Привлекательные места",
+  "str_tashkent": "Ташкент",
+  "str_samarkand": "Самарканд",
+  "str_khiva": "Хива",
+
+  "str_user_management": "Управление пользователями",
+  "str_billing_details": "Платежные данные",
+  "str_settings": "Настройки",
+  "str_notifications": "Уведомления",
+  "str_information": "Информация",
+  "str_log_out": "Выйти",
+
+  "str_full_name": "Полное имя",
+  "str_phone_number": "Телефонный номер",
+  "str_password": "Пароль",
+  "str_confirm_password": "Подтвердить пароль",
+
+  "str_your_phone_number": "Ваш телефон номер",
+  "str_enter_phone_number": "Введите свой номер телефона с \n  кодом страны",
+
+  "str_your_code": "Ваш код",
+  "str_sent_sms": "Мы отправили SMS с кодом активации \n на ваш телефон",
+
+  "str_favorite_page_header": "Избранные дома",
+  "str_empty_favorite_page": "Здесь вы можете собрать ваши любимые места",
+
+  "str_location_text_button": " местоположение...",
+  "str_read_more": " Подробнее...",
+
+  "str_messages_page_header": "Сообщения ",
+  "str_empty_messages_page": "Здесь вы можете пообщаться с продавцами или арендаторами жилья.",
+
+  "str_dark_mode": "Темный режим",
+  "str_language": "Язык",
+
+  "str_clear": "Очистить",
+  "str_clear_all": "Очистить все",
+  "str_done": "Готово",
+
+  "str_wifi": "Wi-Fi",
+  "str_kitchen": "Кухня",
+  "str_air_conditioning": "Кондиционер",
+  "str_washing_machine": "Стиральная машина",
+  "str_iron": "Утюг",
+
+  "str_price_range": "Ценовой диапазон",
+  "str_average_price": "Средняя цена",
+  "str_facilities": "Бытовая техника",
+
+  "str_sign_up": "Зарегистрироваться",
+  "str_sign_in": "Войти в систему",
+  "str_already_have_an_account": "Уже есть учетная запись? ",
+  "str_dont_have_an_account": "Нет учетной записи? "
+
+
+}

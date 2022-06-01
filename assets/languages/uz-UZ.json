@@ -1,0 +1,66 @@
+{
+  "str_intro": "Yashash va dam olish uchun eng yaxshi joyni toping",
+  "str_buy_houses": "Uylar sotib olish",
+  "str_rent_houses": "Uylarni ijaraga olish",
+  "str_houses": "Uylar",
+  "str_for_business": "Biznes uchun binolar",
+  "str_new_buildings": "Yangi binolar",
+  "str_country_houses": "Qishloq uylari",
+  "str_cottages": "Kottejlar",
+  "str_hotels": "Mehmonxonalar",
+  "str_choose_city": "Shahar tanlash",
+  "str_attractive_places": "Diqqatga sazovor joylar",
+  "str_tashkent": "Toshkent",
+  "str_samarkand": "Samarqand",
+  "str_khiva": "Xiva",
+
+  "str_user_management": "Foydalanuvchi boshqaruvi",
+  "str_billing_details": "Hisob-kitob tafsilotlari",
+  "str_settings": "Sozlamalar",
+  "str_notifications": "Bildirishnomalar",
+  "str_information": "Ma`lumot",
+  "str_log_out": "Chiqish",
+
+  "str_full_name": "To'liq ism sharif",
+  "str_phone_number": "Telefon raqam",
+  "str_password": "Parol",
+  "str_confirm_password": "Parolni tasdiqlash",
+
+  "str_your_phone_number": "Sizning telefon raqamingiz",
+  "str_enter_phone_number": "Telefon raqamingizni mamlakat kodi bilan kiriting",
+
+  "str_your_code": "Your code",
+  "str_sent_sms": "Telefon raqamingizni mamlakat kodi bilan kiriting",
+
+  "str_favorite_page_header": "Sevimli uylar",
+  "str_empty_favorite_page": "Sevimli joylaringizni shu yerda to'plashingiz mumkin",
+
+  "str_location_text_button": " joylashuv...",
+  "str_read_more": " Batafsil o'qing...",
+
+  "str_messages_page_header": "Xabarlar ",
+  "str_empty_messages_page": "Bu yerda siz uy sotuvchilari yoki ijarachilar bilan suhbatlashishingiz mumkin",
+
+  "str_dark_mode": "Qorong'u rejim",
+  "str_language": "Til",
+
+  "str_clear": "Tozalash",
+  "str_clear_all": "Hammasini tozalash",
+  "str_done": "Tayyor",
+
+  "str_wifi": "Wi-Fi",
+  "str_kitchen": "Oshxona",
+  "str_air_conditioning": "Konditsioner",
+  "str_washing_machine": "Kir yuvish mashinasi",
+  "str_iron": "Dazmol",
+
+  "str_price_range": "Narxlar oralig'i",
+  "str_average_price": "O'rtacha narx",
+  "str_facilities": "Jihozlar",
+
+  "str_sign_up": "Ro'yxatdan o'tish",
+  "str_sign_in": "Tizimga kirish",
+  "str_already_have_an_account": "Allaqachon akkauntingiz bormi? ",
+  "str_dont_have_an_account": "Hisobingiz yo'qmi? "
+
+}
