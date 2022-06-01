@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:picco/customer/view/pages/home/home_page.dart';
 import 'package:picco/services/hive_service.dart';
 import 'package:picco/services/localization_service.dart';
@@ -13,6 +14,8 @@ import 'seller/views/seller_page_controller.dart';
 import 'services/log_service.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await Hive.initFlutter();
   await Hive.openBox(HiveService.DB_NAME);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
