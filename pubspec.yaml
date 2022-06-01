@@ -68,7 +68,6 @@ dependencies:
   # linggraph appearance
   fl_chart: ^0.50.6
 
-  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

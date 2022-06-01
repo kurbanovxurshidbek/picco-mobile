@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_fullName_page.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_pin_code_page.dart';
-import 'package:picco/customer/view/pages/home/home_page.dart';
 
 class SignupPhoneNumberPageController extends ChangeNotifier {
   bool isLoading = false;
@@ -87,7 +86,7 @@ class SignupPhoneNumberPageController extends ChangeNotifier {
     }
   }
 
-  commitSMS(phoneAuthCredential, context) async {
+  commitSMS(context) async {
     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
         verificationId: verificationId!, smsCode: otpController.text);
     //to sign in to firebase

@@ -1,13 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:picco/customer/viewmodel/providers/sign_up_phone_number_page_controller.dart';
-import 'package:picco/services/localization_service.dart';
-import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/sign_up_phone_pincode.dart';
+
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:picco/services/log_service.dart';
+import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/sign_up_phone_pincode.dart';
+import 'package:picco/customer/viewmodel/providers/sign_up_phone_number_page_controller.dart';
+import 'package:picco/services/localization_service.dart';
 import 'package:provider/provider.dart';
-
-import 'sign_up_pin_code_page.dart';
 
 class SignUpPhoneNumberPage extends StatefulWidget {
   const SignUpPhoneNumberPage({Key? key}) : super(key: key);

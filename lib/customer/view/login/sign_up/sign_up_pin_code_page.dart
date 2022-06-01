@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:picco/customer/viewmodel/providers/sign_up_phone_number_page_controller.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/sign_up_phone_pincode.dart';
@@ -44,7 +44,7 @@ class _SignUpPinCodePageState extends State<SignUpPinCodePage> {
         },
         appContext: context,
       ),
-      onPress: () => provider.commitSMS(PhoneAuthCredential ,context),
+      onPress: () => provider.commitSMS(context),
     );
   }
 }
