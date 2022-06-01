@@ -13,35 +13,35 @@ class SignupPhoneNumberPageController extends ChangeNotifier {
     type: MaskAutoCompletionType.lazy,
   );
 
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  TextEditingController controllerPhoneNumber =
-      TextEditingController(text: "+998");
-  TextEditingController otpController = TextEditingController();
-  String? verificationId;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final controllerPhoneNumber = TextEditingController(text: "+998");
+  final otpController = TextEditingController();
+  String verificationId = "";
+  User? user;
 
   sendSMS(context) async {
     isLoading = true;
     notifyListeners();
     await auth.verifyPhoneNumber(
       phoneNumber: controllerPhoneNumber.text,
-      verificationCompleted: (phoneAuthCredential) async {
+      verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
         isLoading = false;
         notifyListeners();
       },
       //if wrong info
-      verificationFailed: (verificationFailed) async {
+      verificationFailed: (FirebaseAuthException e) async {
         isLoading = false;
         notifyListeners();
         _scaffoldKey.currentState?.showSnackBar(
           SnackBar(
-            content: Text(verificationFailed.message!),
+            content: Text("$e"),
           ),
         );
       },
       //resent code
-      codeSent: (verificationId, resendingToken) async {
+      codeSent: (String verificationId, resendingToken) async {
         isLoading = false;
         //for check and update
         this.verificationId = verificationId;
@@ -55,41 +55,27 @@ class SignupPhoneNumberPageController extends ChangeNotifier {
         );
       },
       //for time out
-      codeAutoRetrievalTimeout: (verificationId) async {},
+      codeAutoRetrievalTimeout: (String verificationId) async {},
     );
   }
 
-  void signInWithPhoneAuthCredential(
-      PhoneAuthCredential phoneAuthCredential, context) async {
-    isLoading = true;
-    notifyListeners();
-
-    try {
-      final authCredential =
-          await auth.signInWithCredential(phoneAuthCredential);
-
-      isLoading = false;
-      notifyListeners();
-
-      if (authCredential.user != null) {
-        Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (context) => const SignUpFullNamePage()));
-      }
-    } on FirebaseAuthException catch (e) {
-      isLoading = false;
-      notifyListeners();
-      _scaffoldKey.currentState?.showSnackBar(
-        SnackBar(
-          content: Text(e.message!),
-        ),
-      );
-    }
-  }
-
   commitSMS(context) async {
-    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
-        verificationId: verificationId!, smsCode: otpController.text);
-    //to sign in to firebase
-    signInWithPhoneAuthCredential(phoneAuthCredential, context);
+    var credential = PhoneAuthProvider.credential(
+        verificationId: verificationId, smsCode: otpController.text);
+    await auth.signInWithCredential(credential).then((value) {
+      user = FirebaseAuth.instance.currentUser;
+      notifyListeners();
+    }).whenComplete(() {
+      if (user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SignUpFullNamePage(),
+          ),
+        );
+      } else {
+        return;
+      }
+    });
   }
 }
