@@ -14,14 +14,18 @@ class AnnouncementProvider extends ChangeNotifier {
   int price = 0;
   double opacityValue = 0;
 
+  int selectTypeHouseIndex = 0;
+  int selectTypeSaleIndex = 0;
+  int selectFacilityIndex = 0;
+
+  List<String> listFacilities = [];
+
   List<double> heights = [
     0.47.sh,
-    0.47.sh,
-    0.72.sh,
-    0.55.sh,
-    // 0.78.sh,
-    // 0.78.sh,
-    0.65.sh,
+    0.43.sh, // choose type sale
+    0.6.sh, // choose type house
+    0.4.sh, // choose location
+    0.6.sh, // choose facility
     0.5.sh,
     0.7.sh,
     0.7.sh,
@@ -34,8 +38,6 @@ class AnnouncementProvider extends ChangeNotifier {
     'Чего вы предлогаете и каком типе хотите вести продажу?',
     'Какой у вас жильё?',
     'Чего вы предлогаете и каком типе хотите вести продажу?',
-    // '',
-    // '',
     'Раскажите гостям о примуществах ващего жиля',
     'Добавить фото жиля',
     'Добавить фото жиля',
@@ -62,13 +64,17 @@ class AnnouncementProvider extends ChangeNotifier {
   ];
   String? selectedOption = 'Город Ташкент';
 
-  updatePageIndex(index){
+  updatePageIndex(index) {
     currentPageIndex = index;
     notifyListeners();
   }
 
-  updatePrice(bool isIncreased){
-    isIncreased ? price += 1 : price != 0 ? price -= 1 : null;
+  updatePrice(bool isIncreased) {
+    isIncreased
+        ? price += 1
+        : price != 0
+            ? price -= 1
+            : null;
     notifyListeners();
   }
 
@@ -77,19 +83,28 @@ class AnnouncementProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // updateHeight(bool isExpanded){
-  //   if(isExpanded){
-  //     headers[3] = '';
-  //     heights[3] = 0.72.sh;
-  //   }else{
-  //     headers[3] = 'Чего вы предлогаете и каком типе хотите вести продажу?';
-  //     heights[3] = 0.55.sh;
-  //   }
-  //   notifyListeners();
-  // }
-
-  updateButtonDisability(bool _isDisabled){
+  updateButtonDisability(bool _isDisabled) {
     isDisabled = _isDisabled;
+    notifyListeners();
+  }
+
+  chooseHouseType(index) {
+    selectTypeHouseIndex = index;
+    notifyListeners();
+  }
+
+  chooseSaleType(index) {
+    selectTypeSaleIndex = index;
+    notifyListeners();
+  }
+
+  chooseFacilities(String item) {
+    listFacilities.add(item);
+    notifyListeners();
+  }
+
+  removeFacilities(String item){
+    listFacilities.remove(item);
     notifyListeners();
   }
 }

@@ -48,7 +48,7 @@ class _LoggedViewState extends State<LoggedView> {
               Column(
                 children: [
                   Text(
-                    user.fullName,
+                    "Jasco",
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class _LoggedViewState extends State<LoggedView> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    user.phoneNumber,
+                    "phone number",
                     style: const TextStyle(
                       fontSize: 15,
                       color: Color(0xff848484),

@@ -1,8 +1,11 @@
-import 'package:picco/seller/views/pages/announcement/provider.dart';
-import 'package:picco/seller/views/pages/announcement/widgets/titles_and_buttons/save_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+
+import '../../provider.dart';
+import '../titles_and_buttons/save_button.dart';
 
 class FourthBody extends StatelessWidget {
   const FourthBody({Key? key}) : super(key: key);
@@ -11,306 +14,205 @@ class FourthBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider =
         context.select((AnnouncementProvider provider) => provider);
-
-    return Stack(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(20.0),
-            ),
-          ),
-          child: const Image(
-            image: AssetImage(
-              'assets/images/map_view.png',
-            ),
-            fit: BoxFit.fitWidth,
-          ),
-        ),
-        Positioned(
-          top: 20.0,
-          left: 30.0,
-          right: 30.0,
-          height: 60,
-          child: TextField(
-            controller: provider.addressController,
-            focusNode: provider.addressFocus,
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.search,
-            style: const TextStyle(fontSize: 20, color: Colors.black87),
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-              labelText: 'Введите аддрес',
-              floatingLabelAlignment: FloatingLabelAlignment.center,
-              floatingLabelBehavior: FloatingLabelBehavior.auto,
-              floatingLabelStyle: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-              labelStyle: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-              prefixIcon: const Icon(
-                Icons.search,
-                color: Colors.black87,
-              ),
-              // suffixIcon: viewModel.isNotEmpty
-              //     ? IconButton(
-              //     splashRadius: 1,
-              //     icon: const Icon(CupertinoIcons.clear,
-              //         size: 18, color: Colors.white),
-              //     onPressed: () {
-              //       viewModel.clear();
-              //     })
-              //     : const SizedBox.shrink(),
-
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                borderSide: const BorderSide(
-                  color: Colors.black54,
-                  width: 2,
+        Expanded(
+          child: Stack(
+            children: [
+              Container(
+                alignment: Alignment.bottomCenter,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20.0),
+                  ),
+                ),
+                child: Lottie.asset(
+                  "assets/lottie/location.json",
+                  width: 0.6.sw,
                 ),
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                borderSide: const BorderSide(
-                  color: Colors.black54,
-                  width: 2,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                borderSide: const BorderSide(
-                  color: Colors.black54,
-                  width: 2,
-                ),
-              ),
-            ),
-            onChanged: (String txt) {},
-            onSubmitted: (String account) {},
-            onTap: (){
-              // provider.updateHeight(true);
-              showModalBottomSheet(
-                  context: context,
-                  backgroundColor: Colors.transparent,
-                  isScrollControlled: true,
-
-                  builder: (BuildContext context) {
-
-                    return DraggableScrollableSheet(
-                        initialChildSize: 0.96,
-                        minChildSize: 0.5,
-                        maxChildSize: 0.96,
-                        builder: (_, controller){
-                          return Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20.0)
-                              ),
-                            ),
-                            child: ListView(
-                              padding: const EdgeInsets.all(10.0),
-                              physics: const BouncingScrollPhysics(),
-                              children: [
-                                Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      icon: const Icon(Icons.arrow_back, size: 27),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: MaterialButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+                        builder: (BuildContext context) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                top: AppBar().preferredSize.height),
+                            child: DraggableScrollableSheet(
+                              initialChildSize: 1,
+                              maxChildSize: 1,
+                              builder: (_, controller) {
+                                return Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(20.0)),
+                                  ),
+                                  child: ListView(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 15,
                                     ),
-                                    const SizedBox(width: 17),
-                                    const Text(
-                                      'Введите аддрес',
-                                      style: TextStyle(color: Colors.black, fontSize: 17),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 30.0),
-                                SizedBox(
-                                  width: 1.sw,
-                                  child: DropdownButtonFormField<String>(
-                                    icon: const Icon(Icons.keyboard_arrow_down, size: 30),
-                                    iconEnabledColor: Colors.black54,
-                                    iconDisabledColor: Colors.grey,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.fromLTRB(10.0, 14.0, 10.0, 14.0),
-                                      labelText: 'Область',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    children: [
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            icon: const Icon(Icons.arrow_back,
+                                                size: 27),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                          const SizedBox(width: 10),
+                                          const Text(
+                                            'Введите аддрес',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                    ),
-                                    value: provider.selectedOption,
-                                    items: provider.options
-                                        .map(
-                                          (e) => DropdownMenuItem<String>(
-                                        value: e,
-                                        child: Text(
-                                          e,
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
+                                      SizedBox(height: 35.0.h),
+                                      _boxGetCity(provider, "Область"),
+                                      const SizedBox(height: 12.0),
+                                      _boxGetCity(provider, "Район/Город"),
+                                      const SizedBox(height: 15.0),
+                                      _boxGetCity(provider, "Улица"),
+                                      const SizedBox(height: 20.0),
+                                      const Divider(),
+                                      const SizedBox(height: 20.0),
+                                      const Text(
+                                        'Точное место',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20.0),
+                                      const Text(
+                                        'Вы можете показать, где именно находится жилье',
+                                      ),
+                                      const SizedBox(height: 20.0),
+                                      Container(
+                                        height: 0.3.sh,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border:
+                                              Border.all(color: Colors.grey),
+                                        ),
+                                        child: Image.asset(
+                                          "assets/icons/img.png",
+                                          height: 0.1.sw,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 10, bottom: 30),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            "Текущее местоположение",
+                                            style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              fontStyle: FontStyle.italic,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    )
-                                        .toList(),
-                                    onChanged: (option) {
-                                      provider.chooseOption(option!);
-                                    },
+                                      SaveButton(provider: provider),
+                                    ],
                                   ),
-                                ),
-                                const SizedBox(height: 15.0),
-                                SizedBox(
-                                  width: 1.sw,
-                                  child: DropdownButtonFormField<String>(
-                                    icon: const Icon(Icons.keyboard_arrow_down, size: 30),
-                                    iconEnabledColor: Colors.black54,
-                                    iconDisabledColor: Colors.grey,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.fromLTRB(10.0, 14.0, 10.0, 14.0),
-                                      labelText: 'Район/Город',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                    ),
-                                    items: provider.options
-                                        .map(
-                                          (e) => DropdownMenuItem<String>(
-                                        value: e,
-                                        child: Text(
-                                          e,
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                        .toList(),
-                                    onChanged: (option) {
-                                      provider.chooseOption(option!);
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 15.0),
-                                SizedBox(
-                                  width: 1.sw,
-                                  child: DropdownButtonFormField<String>(
-                                    icon: const Icon(Icons.keyboard_arrow_down, size: 30),
-                                    iconEnabledColor: Colors.black54,
-                                    iconDisabledColor: Colors.grey,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.fromLTRB(10.0, 14.0, 10.0, 14.0),
-                                      labelText: 'Улица',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          borderSide: const BorderSide(color: Colors.grey)),
-                                    ),
-                                    items: provider.options
-                                        .map(
-                                          (e) => DropdownMenuItem<String>(
-                                        value: e,
-                                        child: Text(
-                                          e,
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                        .toList(),
-                                    onChanged: (option) {
-                                      provider.chooseOption(option!);
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 30.0),
-                                Divider(color: Colors.grey.shade400, thickness: 2),
-                                const SizedBox(height: 20.0),
-                                const Text(
-                                  'Точное место',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                const SizedBox(height: 20.0),
-                                const Text(
-                                  'Вы можете показать, где именно находится жилье',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                const SizedBox(height: 20.0),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(20.0),
-                                      ),
-                                      border: Border.all(color: Colors.grey.shade400, width: 3)),
-                                  child: const Image(
-                                    image: AssetImage(
-                                      'assets/images/map_view.png',
-                                    ),
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                                const SizedBox(height: 20.0),
-                                SaveButton(provider: provider)
-                              ],
+                                );
+                              },
                             ),
                           );
-                        }
-                    );
-                  }
-              );
-            },
+                        },
+                      );
+                    },
+                    color: Colors.white,
+                    minWidth: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    shape: const StadiumBorder(),
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 15),
+                        Icon(CupertinoIcons.location),
+                        SizedBox(width: 10),
+                        Text(
+                          "Введите адрес",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
+    );
+  }
+
+  SizedBox _boxGetCity(AnnouncementProvider provider, String label) {
+    return SizedBox(
+      width: 1.sw,
+      child: DropdownButtonFormField<String>(
+        icon: const Icon(Icons.keyboard_arrow_down),
+        iconEnabledColor: Colors.black54,
+        iconDisabledColor: Colors.grey,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(15.0, 14.0, 15.0, 14.0),
+          labelText: label,
+          labelStyle: TextStyle(
+            color: Colors.grey.shade400,
+            fontSize: 14,
+          ),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: const BorderSide(color: Colors.grey)),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: const BorderSide(color: Colors.grey)),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: const BorderSide(color: Colors.grey)),
+        ),
+        value: provider.selectedOption,
+        items: provider.options
+            .map(
+              (e) => DropdownMenuItem<String>(
+                value: e,
+                child: Text(
+                  e,
+                  style: const TextStyle(fontWeight: FontWeight.w500),
+                ),
+              ),
+            )
+            .toList(),
+        onChanged: (option) {
+          provider.chooseOption(option!);
+        },
+      ),
     );
   }
 }

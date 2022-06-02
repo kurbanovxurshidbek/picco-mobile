@@ -1,13 +1,14 @@
 import 'dart:io';
 
+import 'package:picco/customer/models/user_model.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/pick_image.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/sign_up_phone_pincode.dart';
 import 'package:picco/customer/view/widgets/widget_utils.dart';
-import 'package:picco/models/user_model.dart';
 import 'package:picco/services/hive_service.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 enum ErrorTextField { confirmError, emptyError }
 
@@ -26,6 +27,7 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
   bool errorEmptyConfirmPassword = false;
   bool realTimeError = false;
   File? image;
+  final picker = ImagePicker();
 
   TextEditingController fullNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -77,14 +79,6 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
       errorEmptyFullName = false;
       errorEmptyConfirmPassword = false;
     });
-    UserModel user = UserModel(
-      fullName: fullNameController.text,
-      password: passwordController.text,
-      phoneNumber: phoneNumber,
-      role: "user",
-    );
-    HiveService.box.put("user", user.toJson());
-    // Navigator.popUntil(context, (route) => route.isFirst);
   }
 
   _errorText(TextEditingController controller) {
@@ -97,8 +91,8 @@ class _SignUpFullNamePageState extends State<SignUpFullNamePage> {
     return null;
   }
 
-  _errorBorder(TextEditingController controller){
-    if(controller.text.trim().isNotEmpty){
+  _errorBorder(TextEditingController controller) {
+    if (controller.text.trim().isNotEmpty) {
       return Colors.grey;
     }
     return Colors.red;

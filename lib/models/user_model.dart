@@ -1,17 +1,17 @@
 class UserModel {
-  dynamic id;
-  dynamic fullName;
-  dynamic password;
-  dynamic phoneNumber;
-  dynamic role;
-  dynamic email;
+  late String id;
+  String? fullName;
+  String? password;
+  String? phoneNumber;
+  late String role;
+  String? email;
 
   UserModel({
-    this.id,
+    required this.id,
     this.fullName,
     this.password,
     this.phoneNumber,
-    this.role,
+    required this.role,
     this.email,
   });
 
@@ -32,4 +32,9 @@ class UserModel {
         "role": role,
         "email": email,
       };
+
+  @override
+  String toString() {
+    return "id: $id, role: $role, fullName $fullName, password: $password, phoneNumber: $phoneNumber, email: $email";
+  }
 }
