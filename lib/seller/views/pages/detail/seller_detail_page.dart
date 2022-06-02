@@ -1,13 +1,13 @@
-import 'package:picco/customer/models/favorite_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:picco/models/favorite_model.dart';
 import 'package:readmore/readmore.dart';
 
 class SellerDetailPage extends StatefulWidget {
-  const SellerDetailPage({Key? key, required this.element}) : super(key: key);
-
   final FavouriteModel element;
+
+  const SellerDetailPage({Key? key, required this.element}) : super(key: key);
 
   @override
   State<SellerDetailPage> createState() => _SellerDetailPageState();

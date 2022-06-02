@@ -1,6 +1,6 @@
-// import 'package:cat/seller/views/pages/announcement/provider.dart';
+// import 'package:cat/seller/views/pages/announcement/search_page_provider.dart';
 // import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
+// import 'package:provider/search_page_provider.dart';
 //
 // class FifthBody extends StatelessWidget {
 //   const FifthBody({Key? key}) : super(key: key);

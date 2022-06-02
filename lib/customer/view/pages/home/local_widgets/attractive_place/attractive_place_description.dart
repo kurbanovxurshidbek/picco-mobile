@@ -1,5 +1,5 @@
-import 'package:picco/customer/models/all_models.dart';
-import 'package:picco/customer/view/animations/down_to_up.dart';
+import 'package:picco/models/all_models.dart';
+import 'package:picco/animations/down_to_up.dart';
 import 'package:flutter/material.dart';
 
 class AttractivePlaceDescription extends StatefulWidget {

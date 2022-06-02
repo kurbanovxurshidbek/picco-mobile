@@ -6,7 +6,7 @@ AppBar homeAppBar() {
     elevation: 0,
     backgroundColor: Colors.white,
     title: const Image(
-      image: AssetImage('assets/logo/Picco.png'),
+      image: AssetImage('assets/logo/picco.png'),
       width: 70,
       height: 71,
     ),

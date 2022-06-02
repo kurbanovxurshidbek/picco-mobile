@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/favorite_model.dart';
+import 'package:picco/models/favorite_model.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:picco/customer/view/widgets/widget_utils.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/all_models.dart';
+import 'package:picco/models/all_models.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/sign_up_phone_pincode.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_phone_number_page.dart';
 import 'package:flutter/material.dart';

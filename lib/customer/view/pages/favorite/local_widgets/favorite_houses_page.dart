@@ -1,5 +1,5 @@
-import 'package:picco/customer/models/favorite_model.dart';
-import 'package:picco/customer/models/home_model_map.dart';
+import 'package:picco/models/favorite_model.dart';
+import 'package:picco/models/home_model.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class FavoriteHousesPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: element.homes
-              .map((HomeModelMap e) => Card(
+              .map((HomeModel e) => Card(
                     elevation: 0,
                     margin: const EdgeInsets.all(15),
                     shape: RoundedRectangleBorder(
@@ -32,7 +32,7 @@ class FavoriteHousesPage extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.asset(
-                            e.mainImage,
+                            e.houseImages.first,
                             height: MediaQuery.of(context).size.height * 0.3,
                             width: double.infinity,
                             fit: BoxFit.cover,
@@ -42,7 +42,7 @@ class FavoriteHousesPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            mainTextHouse(e.name),
+                            mainTextHouse(e.city),
                             mainTextHouse(e.price),
                           ],
                         ),

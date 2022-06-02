@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/similar_ads_model.dart';
+import 'package:picco/models/similar_ads_model.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:picco/customer/view/pages/search/detail_page.dart';
 import 'package:flutter/gestures.dart';
@@ -11,8 +11,8 @@ class DetailBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final detailModel = DetailPageInherit.read(context)!.detailModel;
-    final homeModelMap =
-        context.findAncestorWidgetOfExactType<DetailPage>()!.homeModelMap;
+    final homeModel =
+        context.findAncestorWidgetOfExactType<DetailPage>()!.homeModel;
 
     return Column(
       children: [
@@ -26,14 +26,15 @@ class DetailBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    homeModelMap.name,
+                    '${homeModel.district}'
+                    '${homeModel.street}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17.sp,
                     ),
                   ),
                   Text(
-                    homeModelMap.price,
+                    homeModel.price,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17.sp,
@@ -57,7 +58,7 @@ class DetailBody extends StatelessWidget {
                   GestureDetector(
                     onTap: () => detailModel.goHomeLocation(
                       context,
-                      geo: homeModelMap.geo,
+                      geo: homeModel.geo,
                     ),
                     child: Text(
                       LocalizationKey.str_location_text_button.tr(context),

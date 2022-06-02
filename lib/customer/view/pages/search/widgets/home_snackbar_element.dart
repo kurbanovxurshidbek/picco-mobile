@@ -1,12 +1,12 @@
-import 'package:picco/customer/models/home_model_map.dart';
 import 'package:picco/customer/view/pages/search/detail_page.dart';
-import 'package:picco/customer/view/pages/search/local_widgets/map_view_houses/local_animation/fade_animation.dart';
+import 'package:picco/animations/fade_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:picco/models/home_model.dart';
 
 class HomeSnackBarElement extends StatelessWidget {
-  final HomeModelMap homeModel;
+  final HomeModel homeModel;
   final GoogleMapController mapController;
 
   const HomeSnackBarElement({
@@ -36,18 +36,7 @@ class HomeSnackBarElement extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  flex: 2,
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        homeModel.mainImage,
-                        fit: BoxFit.cover,
-                        height: double.infinity,
-                      ),
-                    ],
-                  ),
-                ),
+                const _HouseImage(),
                 Expanded(
                   flex: 4,
                   child: Padding(
@@ -63,7 +52,7 @@ class HomeSnackBarElement extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              'Tashkent city',
+                              '${homeModel.city} city',
                               style: TextStyle(
                                 fontSize: 16.sp,
                               ),
@@ -82,55 +71,13 @@ class HomeSnackBarElement extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          'Yakkasaray region',
+                          '${homeModel.district} region',
                           style: TextStyle(
                             fontSize: 13.sp,
                           ),
                         ),
                         const Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "${int.tryParse('3')} ${int.tryParse('3')! > 1 ? 'beds' : 'bed'}",
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(width: 8.w),
-                            Text(
-                              "${int.tryParse('2')} ${int.tryParse('2')! > 1 ? 'baths' : 'bath'}",
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(width: 8.w),
-                            Text(
-                              "${int.tryParse('3')} ${int.tryParse('3')! > 1 ? 'rooms' : 'room'}",
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(width: 8.w),
-                            Text(
-                              '${int.tryParse('200')}m',
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              '2',
-                              style: TextStyle(
-                                fontSize: 6.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                        _HomeDetails(homeModel: homeModel),
                       ],
                     ),
                   ),
@@ -147,7 +94,7 @@ class HomeSnackBarElement extends StatelessWidget {
     var result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DetailPage(homeModelMap: homeModel),
+        builder: (context) => DetailPage(homeModel: homeModel),
       ),
     );
     if (result is Geo) {
@@ -165,3 +112,79 @@ class HomeSnackBarElement extends StatelessWidget {
     }
   }
 }
+
+class _HouseImage extends StatelessWidget {
+  const _HouseImage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final homeModel =
+        context.findAncestorWidgetOfExactType<HomeSnackBarElement>()!.homeModel;
+    return Expanded(
+      flex: 2,
+      child: Stack(
+        children: [
+          Image.asset(
+            homeModel.houseImages.first,
+            fit: BoxFit.cover,
+            height: double.infinity,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HomeDetails extends StatelessWidget {
+  final HomeModel homeModel;
+
+  const _HomeDetails({Key? key, required this.homeModel}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "${homeModel.bedsCount} ${int.tryParse(homeModel.bedsCount)! > 1 ? 'beds' : 'bed'}",
+          style: TextStyle(
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(width: 8.w),
+        Text(
+          "${homeModel.bathCount} ${int.tryParse(homeModel.bathCount)! > 1 ? 'baths' : 'bath'}",
+          style: TextStyle(
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(width: 8.w),
+        Text(
+          "${homeModel.roomsCount} ${int.tryParse(homeModel.roomsCount)! > 1 ? 'rooms' : 'room'}",
+          style: TextStyle(
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(width: 8.w),
+        Text(
+          '${homeModel.houseSize}m',
+          style: TextStyle(
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        Text(
+          '2',
+          style: TextStyle(
+            fontSize: 6.sp,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+

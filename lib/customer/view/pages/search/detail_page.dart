@@ -1,8 +1,7 @@
-import 'package:picco/customer/models/home_model_map.dart';
-import 'package:picco/customer/models/similar_ads_model.dart';
+import 'package:picco/models/home_model.dart';
+import 'package:picco/models/similar_ads_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'local_widgets/detail_widgets/body_widget.dart';
 import 'local_widgets/detail_widgets/header_widget.dart';
 
@@ -80,11 +79,11 @@ class DetailPageInherit extends InheritedNotifier {
 }
 
 class DetailPage extends StatefulWidget {
-  final HomeModelMap homeModelMap;
+  final HomeModel homeModel;
 
   const DetailPage({
     Key? key,
-    required this.homeModelMap,
+    required this.homeModel,
   }) : super(key: key);
 
   @override
@@ -97,7 +96,7 @@ class _DetailPageState extends State<DetailPage> {
   @override
   void initState() {
     super.initState();
-    detailModel.homeImages = widget.homeModelMap.images;
+    detailModel.homeImages = widget.homeModel.houseImages;
   }
 
   @override

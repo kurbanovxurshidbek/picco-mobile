@@ -1,6 +1,6 @@
-import 'package:picco/customer/models/favorite_model.dart';
 import 'package:picco/customer/view/pages/favorite/local_widgets/favorite_houses_page.dart';
 import 'package:picco/customer/viewmodel/utils.dart';
+import 'package:picco/models/favorite_model.dart';
 import 'package:picco/seller/views/pages/announcement/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,10 +87,16 @@ class _SwitchPageState extends State<SwitchPage> {
                       child: MaterialButton(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.r),
+                          borderRadius: BorderRadius.circular(5.r),
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const AnnouncementPage()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const AnnouncementPage(),
+                            ),
+                          );
                         },
                         child: const Text("Создать обявления"),
                       ),
@@ -108,44 +114,44 @@ class _SwitchPageState extends State<SwitchPage> {
             ),
             !favourites.isNotEmpty
                 ? Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5.w),
-                  width: double.infinity,
-                  height: 40.h,
-                  child: ListView.builder(
-                    itemCount: name.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) =>
-                    (index != 1 + name.length)
-                        ? houseNameContainer(index)
-                        : houseNameContainer(index),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 9),
-                  height: 0.5.sh,
-                  child: ListView(children: [
-                    Column(
-                      children: favourites
-                          .map((FavouriteModel e) => card(e, context))
-                          .toList(),
-                    ),
-                  ]),
-                ),
-              ],
-            )
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 5.w),
+                        width: double.infinity,
+                        height: 40.h,
+                        child: ListView.builder(
+                          itemCount: name.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) =>
+                              (index != 1 + name.length)
+                                  ? houseNameContainer(index)
+                                  : houseNameContainer(index),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 9),
+                        height: 0.5.sh,
+                        child: ListView(children: [
+                          Column(
+                            children: favourites
+                                .map((FavouriteModel e) => card(e, context))
+                                .toList(),
+                          ),
+                        ]),
+                      ),
+                    ],
+                  )
                 : Column(
-              children: [
-                const SizedBox(width: double.infinity),
-                SizedBox(
-                  height: 200.h,
-                  child: Lottie.asset("assets/lottie/home.json"),
-                ),
-                const Text("Oбявлений пока нет"),
-                SizedBox(height: 20.h),
-              ],
-            ),
+                    children: [
+                      const SizedBox(width: double.infinity),
+                      SizedBox(
+                        height: 200.h,
+                        child: Lottie.asset("assets/lottie/home.json"),
+                      ),
+                      const Text("Oбявлений пока нет"),
+                      SizedBox(height: 20.h),
+                    ],
+                  ),
           ],
         ),
       ),
@@ -154,32 +160,32 @@ class _SwitchPageState extends State<SwitchPage> {
 
   /// Tekst apper site button
   GestureDetector houseNameContainer(int index) => GestureDetector(
-    onTap: () {
-      setState(() {
-        sellectedIndex = index;
-      });
-    },
-    child: Container(
-      alignment: Alignment.center,
-      margin: EdgeInsets.all(5.w),
-      padding: EdgeInsets.symmetric(horizontal: 15.w),
-      decoration: BoxDecoration(
-          color: sellectedIndex == index
-              ? const Color(0xff7169F9)
-              : Colors.white,
-          border: Border.all(
-              width: 0.5,
-              color: sellectedIndex == index ? Colors.white : Colors.black),
-          borderRadius: BorderRadius.circular(20)),
-      child: Text(
-        name[index],
-        style: TextStyle(
-          color: sellectedIndex == index ? Colors.white : Colors.black,
-          fontSize: 15,
+        onTap: () {
+          setState(() {
+            sellectedIndex = index;
+          });
+        },
+        child: Container(
+          alignment: Alignment.center,
+          margin: EdgeInsets.all(5.w),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          decoration: BoxDecoration(
+              color: sellectedIndex == index
+                  ? const Color(0xff7169F9)
+                  : Colors.white,
+              border: Border.all(
+                  width: 0.5,
+                  color: sellectedIndex == index ? Colors.white : Colors.black),
+              borderRadius: BorderRadius.circular(20)),
+          child: Text(
+            name[index],
+            style: TextStyle(
+              color: sellectedIndex == index ? Colors.white : Colors.black,
+              fontSize: 15,
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      );
 
   GestureDetector card(FavouriteModel element, BuildContext context) {
     return Card(
@@ -191,7 +197,7 @@ class _SwitchPageState extends State<SwitchPage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
-                element.homes.last.mainImage,
+                element.homes.first.houseImages.first,
                 width: 65.h,
                 height: 65.h,
                 fit: BoxFit.fill,

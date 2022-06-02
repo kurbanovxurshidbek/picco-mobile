@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/favorite_model.dart';
+import 'package:picco/models/favorite_model.dart';
 import 'package:picco/seller/views/pages/announcement/view.dart';
 import 'package:picco/seller/views/pages/detail/seller_detail_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -100,7 +100,8 @@ class _FullHomePageState extends State<FullHomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AnnouncementPage()));
+                                      builder: (context) =>
+                                          AnnouncementPage()));
                             });
                           },
                           child: const Text("Создать обявления"),
@@ -189,16 +190,25 @@ class _FullHomePageState extends State<FullHomePage> {
         ),
       );
 
-  Widget card(FavouriteModel element, BuildContext context,) {
+  Widget card(
+    FavouriteModel element,
+    BuildContext context,
+  ) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> SellerDetailPage(element: element)));
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SellerDetailPage(element: element),
+          ),
+        );
       },
       child: Container(
         height: 80.h,
         width: double.infinity,
         clipBehavior: Clip.antiAlias,
-        margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 10.h,top: 10.h),
+        margin:
+            EdgeInsets.only(left: 20.w, right: 20.w, bottom: 10.h, top: 10.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.r),
           color: Colors.white,
@@ -214,8 +224,9 @@ class _FullHomePageState extends State<FullHomePage> {
                 width: 100.w,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(element.homes.last.mainImage),
-                      fit: BoxFit.cover),
+                    image: AssetImage(element.homes.first.houseImages.first),
+                    fit: BoxFit.cover,
+                  ),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),

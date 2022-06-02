@@ -1,5 +1,5 @@
-import 'package:picco/customer/models/all_models.dart';
-import 'package:picco/customer/models/user_model.dart';
+import 'package:picco/models/all_models.dart';
+import 'package:picco/models/user_model.dart';
 import 'package:picco/services/hive_service.dart';
 import 'package:flutter/material.dart';
 

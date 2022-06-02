@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/favorite_model.dart';
+import 'package:picco/models/favorite_model.dart';
 import 'package:picco/customer/view/pages/favorite/local_widgets/favorite_houses_page.dart';
 import 'package:flutter/material.dart';
 import 'package:picco/customer/viewmodel/utils.dart';
@@ -30,7 +30,7 @@ class BuildScale extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
-                element.homes.last.mainImage,
+                element.homes.first.houseImages.first,
                 width: 65.h,
                 height: 65.h,
                 fit: BoxFit.fill,

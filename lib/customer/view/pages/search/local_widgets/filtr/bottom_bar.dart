@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/all_models.dart';
+import 'package:picco/models/all_models.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +14,9 @@ class BottomBarFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _minValue = (sliderValue.start.floor() * 20);
+    int _minValue = sliderValue.start.floor() * 20;
     int _maxValue = sliderValue.end.floor() * 20;
+
     Map<String, dynamic> response = {
       "price": {"\nminValue : $_minValue,\nmaxValue :  $_maxValue\n"},
       "\nfecilities": [

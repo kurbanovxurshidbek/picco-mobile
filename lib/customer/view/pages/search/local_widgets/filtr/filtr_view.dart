@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/all_models.dart';
+import 'package:picco/models/all_models.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:picco/customer/view/widgets/top_divider_bottom_sheet.dart';
 

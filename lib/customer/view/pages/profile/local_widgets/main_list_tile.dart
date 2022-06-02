@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/all_models.dart';
+import 'package:picco/models/all_models.dart';
 import 'package:flutter/material.dart';
 
 class MainListTile extends StatelessWidget {

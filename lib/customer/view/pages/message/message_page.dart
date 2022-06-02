@@ -1,4 +1,4 @@
-import 'package:picco/customer/models/message_model.dart';
+import 'package:picco/models/message_model.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
