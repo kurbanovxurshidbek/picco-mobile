@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "1009611456023",
-    "project_id": "picco-mobile-e25b6",
-    "storage_bucket": "picco-mobile-e25b6.appspot.com"
+    "project_number": "115835910850",
+    "project_id": "picco-e79a5",
+    "storage_bucket": "picco-e79a5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1009611456023:android:f6b54dbd467ecc5046e652",
+        "mobilesdk_app_id": "1:115835910850:android:939b705726516a4adc995b",
         "android_client_info": {
           "package_name": "com.picco.picco"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1009611456023-6t452d4tk5ngjj20j244ifi18gdo199i.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.picco.picco",
-            "certificate_hash": "13176396acda76aecd15bebc3aed7fcf6c015dda"
-          }
-        },
-        {
-          "client_id": "1009611456023-b9per6143r4ak6u97d71ljekm991n0dq.apps.googleusercontent.com",
+          "client_id": "115835910850-f70vsbavtpkqire3ibk55l9g0hjfjk64.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAnEhDmPAM5kimpxTWgpidXDHbcGITBihc"
+          "current_key": "AIzaSyDcxAk50asURPfW1115AwnJ4xjXz1iwh08"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1009611456023-b9per6143r4ak6u97d71ljekm991n0dq.apps.googleusercontent.com",
+              "client_id": "115835910850-f70vsbavtpkqire3ibk55l9g0hjfjk64.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:picco/customer/view/login/sign_up/sign_up_phone_number_page.dart';
 import 'package:picco/customer/view/pages/home/home_page.dart';
 import 'package:picco/services/hive_service.dart';
 import 'package:picco/services/localization_service.dart';
@@ -38,7 +39,6 @@ class MyApp extends StatelessWidget {
       create: (context) => LocalizationViewModel(),
       child: Consumer<LocalizationViewModel>(
         builder: (context, provider, child) {
-          Log.d(provider.isUser.toString());
           return ScreenUtilInit(
             designSize: const Size(360, 690),
             minTextAdapt: true,
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               home: child,
             ),
             child: provider.isUser
-                ? const HomePage()
+                ? const SignUpPhoneNumberPage()
                 : const SellerPageController(),
           );
         },

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_fullName_page.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_pin_code_page.dart';
+import 'package:picco/services/log_service.dart';
 
 class SignupPhoneNumberPageController extends ChangeNotifier {
   bool isLoading = false;
@@ -29,21 +30,21 @@ class SignupPhoneNumberPageController extends ChangeNotifier {
       verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
         isLoading = false;
         notifyListeners();
+        Log.d(phoneAuthCredential.toString());
       },
       //if wrong info
       verificationFailed: (FirebaseAuthException e) async {
         isLoading = false;
         notifyListeners();
         _scaffoldKey.currentState?.showSnackBar(
-          SnackBar(
-            content: Text("$e"),
-          ),
+          SnackBar(content: Text("$e")),
         );
+        Log.d(e.toString());
       },
       //resent code
       codeSent: (String verificationId, resendingToken) async {
+        Log.d(verificationId);
         isLoading = false;
-        //for check and update
         this.verificationId = verificationId;
         notifyListeners();
         Navigator.push(
@@ -55,7 +56,9 @@ class SignupPhoneNumberPageController extends ChangeNotifier {
         );
       },
       //for time out
-      codeAutoRetrievalTimeout: (String verificationId) async {},
+      codeAutoRetrievalTimeout: (String verificationId) async {
+        Log.d("codeAutoRetrievalTimeout");
+      },
     );
   }
 
