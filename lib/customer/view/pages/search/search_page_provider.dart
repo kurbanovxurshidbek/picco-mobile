@@ -14,9 +14,9 @@ import 'package:picco/services/location_service.dart';
 import 'package:picco/services/log_service.dart';
 import 'package:picco/services/utils.dart';
 
-import 'widgets/flutter_widget_to_image.dart';
-import 'widgets/home_snackbar_element.dart';
-import 'widgets/marker_template_widget.dart';
+import 'local_widgets/map/flutter_widget_to_image.dart';
+import 'local_widgets/map/home_snackbar_element.dart';
+import 'local_widgets/map/marker_template_widget.dart';
 
 class SearchPageInherit extends InheritedNotifier<SearchProvider> {
   const SearchPageInherit({

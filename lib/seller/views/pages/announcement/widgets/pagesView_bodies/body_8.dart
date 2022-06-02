@@ -2,6 +2,7 @@ import 'package:lottie/lottie.dart';
 import 'package:picco/seller/views/pages/announcement/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:picco/services/log_service.dart';
 import 'package:provider/provider.dart';
 
 class EighthBody extends StatelessWidget {
@@ -37,10 +38,14 @@ class EighthBody extends StatelessWidget {
                     onTap: () async {
                       await provider.getFileImages();
 
-                      provider.pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
+                      Log.w('ddddddddssssssssssssss');
+
+                     if (provider.images.isNotEmpty) {
+                       provider.pageController.nextPage(
+                         duration: const Duration(milliseconds: 500),
+                         curve: Curves.ease,
+                       );
+                     }
                       // provider.navigate(8);
                     },
                     leading: const Image(
@@ -68,10 +73,14 @@ class EighthBody extends StatelessWidget {
                     onTap: () async {
                       await provider.getCameraImage();
 
-                      provider.pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
+                      Log.w('ddddddddddddddddddddd');
+
+                      if (provider.images.isNotEmpty) {
+                        provider.pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
+                      }
                     },
                     leading: const Icon(
                       CupertinoIcons.camera,

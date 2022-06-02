@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               home: child,
             ),
             child: provider.isUser
-                ? const SignUpPhoneNumberPage()
+                ? const HomePage()
                 : const SellerPageController(),
           );
         },
