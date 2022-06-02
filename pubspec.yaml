@@ -66,6 +66,12 @@ dependencies:
   # linggraph appearance
   fl_chart: ^0.50.6
 
+  # for backend data
+  firebase_auth: ^3.3.19
+  firebase_core: ^1.17.1
+  cloud_firestore: ^3.1.17
+  firebase_storage: ^10.2.17
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -85,6 +91,7 @@ flutter:
     - assets/map_style/
     - assets/languages/
     - assets/lottie/
+    - assets/icons/
 
   # fonts:
   #   - family: Schyler

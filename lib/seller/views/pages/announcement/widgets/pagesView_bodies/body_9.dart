@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:picco/seller/views/pages/announcement/provider.dart';
+import 'package:provider/provider.dart';
 
 class NinthBody extends StatelessWidget {
   const NinthBody({Key? key}) : super(key: key);
@@ -11,7 +13,8 @@ class NinthBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final provider = context.select((AnnouncementProvider provider) => provider);
+    final provider =
+        context.select((AnnouncementProvider provider) => provider);
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
@@ -46,28 +49,30 @@ class NinthBody extends StatelessWidget {
           ),
           const SizedBox(height: 14.0),
           Container(
-              width: 1.sw,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: Image(
-                image: AssetImage(images.first),
-                fit: BoxFit.cover,
-              )),
+            width: 1.sw,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+            child: Image(
+              image: AssetImage(images.first),
+              fit: BoxFit.cover,
+            ),
+          ),
           const Divider(color: Colors.transparent),
           Row(
             children: [
               Expanded(
                 child: Container(
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Image(
-                      image: AssetImage(images[1]),
-                      fit: BoxFit.cover,
-                    )),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Image(
+                    image: AssetImage(images[1]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               const VerticalDivider(color: Colors.transparent),
               Expanded(

@@ -7,7 +7,7 @@ import 'log_service.dart';
 class StoreService {
   static final DateTime now = DateTime.now();
   static final String today = ('${now.month.toString()}-${now.day.toString()}');
-  static final String storageId = '$today-${now.millisecondsSinceEpoch}';
+  static final String storageId = '$today-${now.millisecondsSinceEpoch}.jpg';
 
   static var percentageStream = StreamController<double>();
   static final metadata = SettableMetadata(contentType: "image/jpeg");

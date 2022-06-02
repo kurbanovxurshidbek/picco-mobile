@@ -44,21 +44,18 @@ class SeventhBody extends StatelessWidget {
           shrinkWrap: true,
           padding: EdgeInsets.zero,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
+            crossAxisCount: 2,
+          ),
           itemCount: media.length,
           itemBuilder: (BuildContext context, index) {
             return Container(
               margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: watchProvider.listFacilities
-                          .contains(media.values.toList()[index])
+                  color: watchProvider.listFacilities[index]
                       ? Colors.black
                       : Colors.grey.shade300,
-                  width: watchProvider.listFacilities
-                          .contains(media.values.toList()[index])
-                      ? 1.5
-                      : 1.3,
+                  width: watchProvider.listFacilities[index] ? 1.5 : 1.3,
                 ),
                 borderRadius: BorderRadius.circular(5.0),
               ),
@@ -83,16 +80,9 @@ class SeventhBody extends StatelessWidget {
                   ),
                 ),
               ),
-            ).onTap(
-              function: () {
-                watchProvider.listFacilities
-                        .contains(media.values.toList()[index])
-                    ? watchProvider
-                        .removeFacilities(media.values.toList()[index])
-                    : watchProvider
-                        .chooseFacilities(media.values.toList()[index]);
-              },
-            );
+            ).onTap(function: () {
+              watchProvider.updateFacilities(index);
+            });
           },
         ),
       ],

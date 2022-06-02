@@ -35,12 +35,12 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
 
         if (move.relativeToSnappingPositions == 0.0) {
           provider.zoomIn();
-          // setState(() {});
+        } else if (move.relativeToSheetHeight == 0.4) {
+          provider.zoomOut();
         }
       },
       initialSnappingPosition: const SnappingPosition.factor(
         positionFactor: 0.4,
-        snappingCurve: Curves.easeOutExpo,
         snappingDuration: Duration(milliseconds: 300),
         grabbingContentOffset: GrabbingContentOffset.top,
       ),
@@ -48,17 +48,15 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
       snappingPositions: const [
         SnappingPosition.factor(
           positionFactor: 0.0,
-          snappingCurve: Curves.easeOutExpo,
           snappingDuration: Duration(milliseconds: 300),
           grabbingContentOffset: GrabbingContentOffset.top,
         ),
         SnappingPosition.factor(
-          positionFactor: 0.55,
+          positionFactor: 0.4,
           snappingDuration: Duration(milliseconds: 300),
         ),
         SnappingPosition.factor(
           positionFactor: 1,
-          snappingCurve: Curves.easeOutExpo,
           snappingDuration: Duration(milliseconds: 300),
           grabbingContentOffset: GrabbingContentOffset.bottom,
         ),

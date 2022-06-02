@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class SecondBody extends StatelessWidget {
   SecondBody({Key? key}) : super(key: key);
 
-  List<Map<String, String>> data = [
+  final List<Map<String, String>> data = [
     {'Продать жильё': 'Продать многокомнатную квартиру, зданию или участок'},
     {
       'Сдать в аренду жильё':

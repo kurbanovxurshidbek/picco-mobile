@@ -46,6 +46,7 @@ class SearchProvider extends ChangeNotifier {
   PlaceModel? placeModel;
   final focusNode = FocusNode();
   bool showAutoFeel = false;
+
   List<HomeModel> homes = [
     HomeModel(
       sellType: 'Buy',
@@ -55,11 +56,11 @@ class SearchProvider extends ChangeNotifier {
       street: 'ko`cha',
       price: '100',
       definition: 'bla bla bla',
-      geo: Geo(
+      geo: const Geo(
         latitude: 46.123452343,
         longitude: 16.2424552464,
       ),
-      houseConveniences: [
+      houseFacilities: [
         true,
         false,
         true,

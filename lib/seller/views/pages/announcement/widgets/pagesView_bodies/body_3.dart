@@ -6,8 +6,9 @@ import 'package:provider/provider.dart';
 import '../../provider.dart';
 
 class ThirdBody extends StatelessWidget {
-  const ThirdBody({Key? key}) : super(key: key);
-  static const Map<String, String> dataRent = {
+  ThirdBody({Key? key}) : super(key: key);
+
+  final Map<String, String> dataRent = {
     'Дом / квартира': 'assets/images/1.png',
     'Здание для бизнеса': 'assets/images/2.png',
     'Новостройки': 'assets/images/3.png',
@@ -15,7 +16,8 @@ class ThirdBody extends StatelessWidget {
     'Гостиницы': 'assets/images/5.png',
     'Загородные дома': 'assets/images/6.png',
   };
-  static const Map<String, String> dataBuy = {
+
+  final Map<String, String> dataBuy = {
     'Дом / квартира': 'assets/images/1.png',
     'Здание для бизнеса': 'assets/images/2.png',
     'Новостройки': 'assets/images/3.png',

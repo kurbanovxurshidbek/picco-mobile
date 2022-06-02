@@ -8,7 +8,7 @@ class HomeModel {
   final String price;
   final String definition;
   final Geo geo;
-  final List<bool> houseConveniences;
+  final List<bool> houseFacilities;
   final String bedsCount;
   final String bathCount;
   final String roomsCount;
@@ -25,7 +25,7 @@ class HomeModel {
     required this.price,
     required this.definition,
     required this.geo,
-    required this.houseConveniences,
+    required this.houseFacilities,
     required this.bedsCount,
     required this.bathCount,
     required this.roomsCount,
@@ -44,7 +44,7 @@ class HomeModel {
       'price': price,
       'definition': definition,
       'geo': geo.toJson(),
-      'houseConveniences': houseConveniences,
+      'houseFacilities': houseFacilities,
       'bedsCount': bedsCount,
       'bathCount': bathCount,
       'roomsCount': roomsCount,
@@ -64,7 +64,7 @@ class HomeModel {
       price: json['price'] as String,
       definition: json['definition'] as String,
       geo: Geo.fromJson(json['geo']),
-      houseConveniences: json['houseConveniences'] as List<bool>,
+      houseFacilities: json['houseFacilities'] as List<bool>,
       bedsCount: json['bedsCount'] as String,
       bathCount: json['bathCount'] as String,
       roomsCount: json['roomsCount'] as String,
@@ -85,7 +85,7 @@ class HomeModel {
         'price: $price,'
         'definition: $definition,'
         'geo: $geo,'
-        'houseConveniences: $houseConveniences,'
+        'houseFacilities: $houseFacilities,'
         'bedsCount: $bedsCount,'
         'bathCount: $bathCount,'
         'roomsCount: $roomsCount,'
@@ -123,16 +123,16 @@ class Geo {
   }
 }
 
-const homeSellType = {
-  'Buy Houses': 'buy_houses',
-  'Rent Houses': 'rent_houses',
-};
+const homeSellType = [
+  'buy_houses',
+  'rent_houses',
+];
 
-const homeCategoryType = {
-  'House': 'house',
-  'Buildings for business': 'buildings_for_business',
-  'New Building': 'new_building',
-  'Country Houses': 'country_houses',
-  'Cottage': 'cottage',
-  'Hotel': 'hotel',
-};
+const homeCategoryType = [
+  'house',
+  'buildings_for_business',
+  'new_building',
+  'cottage',
+  'hotel',
+  'country_houses',
+];

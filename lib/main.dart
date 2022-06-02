@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:picco/customer/view/pages/home/home_page.dart';
 import 'package:picco/services/hive_service.dart';
 import 'package:picco/services/localization_service.dart';

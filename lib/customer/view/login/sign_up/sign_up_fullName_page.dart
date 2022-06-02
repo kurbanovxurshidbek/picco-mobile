@@ -1,10 +1,7 @@
 import 'dart:io';
-
-import 'package:picco/customer/models/user_model.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/pick_image.dart';
 import 'package:picco/customer/view/login/sign_up/sign_up_local_widgets/sign_up_phone_pincode.dart';
 import 'package:picco/customer/view/widgets/widget_utils.dart';
-import 'package:picco/services/hive_service.dart';
 import 'package:picco/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

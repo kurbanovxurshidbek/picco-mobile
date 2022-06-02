@@ -15,13 +15,11 @@ class FirestoreService {
 
   // * House Related
   static Future<void> storeHouse(HomeModel house) async {
-    final sellType = homeSellType[house.sellType];
-    final categoryType = homeCategoryType[house.homeType];
-
     final query = _instance
         .collection(homesFolder)
-        .doc(sellType!)
-        .collection(categoryType!);
+        .doc(house.sellType)
+        .collection(house.homeType);
+
 
     house.id = query.doc().id;
 
